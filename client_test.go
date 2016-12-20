@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-func TestClient(t *testing.T)  {
+func TestClientVersion(t *testing.T)  {
 	client, err := convert.NewClient()
 	if err != nil {
 		log.Fatal(err)
@@ -16,3 +16,15 @@ func TestClient(t *testing.T)  {
 	fmt.Println(v)
 }
 
+
+func TestPdfConvert(t *testing.T)  {
+	client, err := convert.NewClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+	out, err := client.Src("sample.pdf").Digest("sample.jpg").Out()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(out)
+}
